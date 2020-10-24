@@ -8,23 +8,29 @@ namespace MarketStore.Model
 {
     class Bronze : Card
     {
-        private Bronze bronzeCard { get; set; }
-
-        Bronze()
+        
+        public Bronze()
         {
 
         }
-        public override double CalculateDiscountRate()
+        public Bronze(double turnover)
         {
-            throw new NotImplementedException();
+            this.Turnover = turnover;
         }
-        public override double TotalPurchase(double purchaseValue)
+        protected override double CalculateDiscountRate()
         {
-            throw new NotImplementedException();
-        }
-        public override double CalculateDiscount(double purchaseValue)
-        {
-            throw new NotImplementedException();
+            if (this.Turnover < 100)
+            {
+                return 0;
+            }
+            else if (this.Turnover > 300)
+            {
+                return 2.5;
+            }
+            else
+            {
+                return 1;
+            }
         }
     }
 }

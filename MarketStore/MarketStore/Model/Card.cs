@@ -11,8 +11,24 @@ namespace MarketStore.Model
         protected string Owner { get; set; }
         protected double Turnover { get; set; }
         protected double DiscountRate { get; set; }
-        public abstract double CalculateDiscountRate();
-        public abstract double CalculateDiscount(double purchaseValue);
-        public abstract double TotalPurchase(double purchaseValue);
+        protected abstract double CalculateDiscountRate();
+        protected double CalculateDiscount(double purchaseValue)
+        {
+            return purchaseValue * CalculateDiscountRate() / 100;
+        }
+        public double TotalPurchase(double purchaseValue)
+        {
+            PrintResult(purchaseValue, CalculateDiscountRate(), CalculateDiscount(purchaseValue), purchaseValue - CalculateDiscount(purchaseValue));
+            return purchaseValue - CalculateDiscount(purchaseValue);
+        }
+        public void PrintResult(double purchaseValue, double discountRate, double discount, double total)
+        {
+            Console.WriteLine("=================================");
+            Console.WriteLine("Purchase value: " + purchaseValue + "$" + 
+                "\nDiscount rate: "+ discountRate + "%" +
+                "\nDiscount: " + discount + "$" +
+                "\nTotal: " + total + "$");
+            Console.WriteLine("=================================");
+        }
     }
 }

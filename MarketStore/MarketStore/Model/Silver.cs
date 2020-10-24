@@ -13,15 +13,7 @@ namespace MarketStore.Model
         {
 
         }
-        public override double CalculateDiscountRate()
-        {
-            throw new NotImplementedException();
-        }
-        public override double TotalPurchase(double purchaseValue)
-        {
-            throw new NotImplementedException();
-        }
-        public override double CalculateDiscount(double purchaseValue)
+        protected override double CalculateDiscountRate()
         {
             throw new NotImplementedException();
         }
