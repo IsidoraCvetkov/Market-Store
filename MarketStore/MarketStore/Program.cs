@@ -17,6 +17,9 @@ namespace MarketStore
             Silver silverCard = new Silver(600);
             silverCard.TotalPurchase(850);
 
+            Gold goldCard = new Gold(600);
+            goldCard.TotalPurchase(1300);
+
             Console.ReadLine();
         }
     }
