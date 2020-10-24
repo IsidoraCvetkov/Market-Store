@@ -8,11 +8,7 @@ namespace MarketStore.Model
 {
     class Gold : Card
     {
-        private Gold goldCard { get; set; }
-        Gold()
-        {
-
-        }
+        public Gold() { }
         protected override double CalculateDiscountRate()
         {
             throw new NotImplementedException();

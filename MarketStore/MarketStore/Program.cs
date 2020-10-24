@@ -14,6 +14,9 @@ namespace MarketStore
             Bronze bronzeCard = new Bronze(0);
             bronzeCard.TotalPurchase(150);
 
+            Silver silverCard = new Silver(600);
+            silverCard.TotalPurchase(850);
+
             Console.ReadLine();
         }
     }
