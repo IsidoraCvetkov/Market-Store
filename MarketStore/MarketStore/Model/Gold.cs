@@ -8,21 +8,24 @@ namespace MarketStore.Model
 {
     class Gold : Card
     {
-        public Gold()
+        public Gold(IPrintOutput printOutput, double turnover) : base(printOutput, turnover)
         {
-            this.DiscountRate = 2;
-        }
-        public Gold(double turnover)
-        {
-            this.Turnover = turnover;
             this.DiscountRate = 2;
         }
         protected override double CalculateDiscountRate()
         {
-            if ((this.Turnover / 100) + 2 > 10)
-                return 10;
-            else
-                return (this.Turnover / 100) + 2;
+            try
+            {
+                if ((this.Turnover / 100) + 2 > 10)
+                    return 10;
+                else
+                    return (this.Turnover / 100) + 2;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Exception: {0}", ex);
+                throw;
+            }
         }
     }
 }

@@ -12,23 +12,30 @@ namespace MarketStore.Model
         protected double Turnover { get; set; }
         protected double DiscountRate { get; set; }
         protected abstract double CalculateDiscountRate();
+        protected IPrintOutput PrintOutput;
+        public Card(IPrintOutput printOutput, double turnover)
+        {
+            this.Turnover = turnover;
+            this.PrintOutput = printOutput;
+        }
         protected double CalculateDiscount(double purchaseValue)
         {
             return purchaseValue * CalculateDiscountRate() / 100;
         }
         public double TotalPurchase(double purchaseValue)
         {
-            PrintResult(purchaseValue, CalculateDiscountRate(), CalculateDiscount(purchaseValue), purchaseValue - CalculateDiscount(purchaseValue));
+            PrintOutput.PrintResult(purchaseValue, CalculateDiscountRate(), CalculateDiscount(purchaseValue), purchaseValue - CalculateDiscount(purchaseValue));
             return purchaseValue - CalculateDiscount(purchaseValue);
         }
-        public void PrintResult(double purchaseValue, double discountRate, double discount, double total)
-        {
-            Console.WriteLine("=================================");
-            Console.WriteLine("Purchase value: " + purchaseValue + "$" + 
-                "\nDiscount rate: "+ discountRate + "%" +
-                "\nDiscount: " + discount + "$" +
-                "\nTotal: " + total + "$");
-            Console.WriteLine("=================================");
-        }
+
+        //public void PrintResult(double purchaseValue, double discountRate, double discount, double total)
+        //{
+        //    Console.WriteLine("=================================");
+        //    Console.WriteLine("Purchase value: " + purchaseValue + "$" + 
+        //        "\nDiscount rate: "+ discountRate + "%" +
+        //        "\nDiscount: " + discount + "$" +
+        //        "\nTotal: " + total + "$");
+        //    Console.WriteLine("=================================");
+        //}
     }
 }

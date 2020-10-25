@@ -42,10 +42,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="IPrintOutput.cs" />
     <Compile Include="Model\Bronze.cs" />
     <Compile Include="Model\Card.cs" />
     <Compile Include="Model\Gold.cs" />
     <Compile Include="Model\Silver.cs" />
+    <Compile Include="PrintOutput.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

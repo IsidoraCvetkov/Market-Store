@@ -8,17 +8,24 @@ namespace MarketStore.Model
 {
     class Silver : Card
     {
-        public Silver() { }
-        public Silver(double turnover)
+        public Silver(IPrintOutput printOutput, double turnover) : base(printOutput, turnover)
         {
-            this.Turnover = turnover;
+
         }
         protected override double CalculateDiscountRate()
         {
-            if (this.Turnover > 300)
-                return 3.5;
-            else
-                return 2;
-        }
+            try
+            { 
+                if (this.Turnover > 300)
+                    return 3.5;
+                else
+                    return 2;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Exception: {0}", ex);
+                throw;
+            }
+}
     }
 }

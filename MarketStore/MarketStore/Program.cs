@@ -11,13 +11,15 @@ namespace MarketStore
     {
         static void Main(string[] args)
         {
-            Bronze bronzeCard = new Bronze(0);
+            IPrintOutput printOutput = new PrintOutput();
+
+            Bronze bronzeCard = new Bronze(printOutput, 0);
             bronzeCard.TotalPurchase(150);
 
-            Silver silverCard = new Silver(600);
+            Silver silverCard = new Silver(printOutput, 600);
             silverCard.TotalPurchase(850);
 
-            Gold goldCard = new Gold(600);
+            Gold goldCard = new Gold(printOutput, 600);
             goldCard.TotalPurchase(1300);
 
             Console.ReadLine();
