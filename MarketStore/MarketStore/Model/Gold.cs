@@ -14,18 +14,13 @@ namespace MarketStore.Model
         }
         protected override double CalculateDiscountRate()
         {
-            try
-            {
-                if ((this.Turnover / 100) + 2 > 10)
+            if (Turnover < 0)
+                throw new RangeException("Turnover value can not be less then 0. {Gold card}");
+
+            if ((Turnover / 100) + 2 > 10)
                     return 10;
                 else
-                    return (this.Turnover / 100) + 2;
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine("Exception: {0}", ex);
-                throw;
-            }
+                    return (Turnover / 100) + 2;
         }
     }
 }

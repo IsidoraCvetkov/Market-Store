@@ -10,24 +10,18 @@ namespace MarketStore.Model
     {
         public Bronze(IPrintOutput printOutput, double turnover) : base(printOutput, turnover)
         {
-
         }
         protected override double CalculateDiscountRate()
         {
-            try
-            {
-                if (this.Turnover < 100)
-                    return 0;
-                else if (this.Turnover > 300)
-                    return 2.5;
-                else
-                    return 1;
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine("Exception: {0}", ex);
-                throw;
-            }
+            if(Turnover < 0)
+                throw new RangeException("Turnover value can not be less then 0. {Bronze card}"); 
+
+            if (Turnover < 100)
+                return 0;
+            else if (Turnover > 300)
+                return 2.5;
+            else
+                return 1;
         }
     }
 }

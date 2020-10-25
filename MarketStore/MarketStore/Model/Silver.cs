@@ -10,22 +10,16 @@ namespace MarketStore.Model
     {
         public Silver(IPrintOutput printOutput, double turnover) : base(printOutput, turnover)
         {
-
         }
         protected override double CalculateDiscountRate()
         {
-            try
-            { 
-                if (this.Turnover > 300)
+            if (Turnover < 0)
+                throw new RangeException("Turnover value can not be less then 0. {Silver card}");
+
+            if (Turnover > 300)
                     return 3.5;
                 else
                     return 2;
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine("Exception: {0}", ex);
-                throw;
-            }
-}
+        }
     }
 }

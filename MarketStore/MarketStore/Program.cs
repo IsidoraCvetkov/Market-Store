@@ -13,14 +13,35 @@ namespace MarketStore
         {
             IPrintOutput printOutput = new PrintOutput();
 
-            Bronze bronzeCard = new Bronze(printOutput, 0);
-            bronzeCard.TotalPurchase(150);
+            try
+            {
+                Bronze bronzeCard = new Bronze(printOutput, 0);
+                bronzeCard.TotalPurchase(150);
+            }
+            catch(RangeException ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
 
-            Silver silverCard = new Silver(printOutput, 600);
-            silverCard.TotalPurchase(850);
+            try
+            {
+                Silver silverCard = new Silver(printOutput, 600);
+                silverCard.TotalPurchase(850);
+            }
+            catch (RangeException ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
 
-            Gold goldCard = new Gold(printOutput, 600);
-            goldCard.TotalPurchase(1300);
+            try
+            {
+                Gold goldCard = new Gold(printOutput, 1500);
+                goldCard.TotalPurchase(1300);
+            }
+            catch (RangeException ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
 
             Console.ReadLine();
         }

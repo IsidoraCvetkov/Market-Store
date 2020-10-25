@@ -24,18 +24,18 @@ namespace MarketStore.Model
         }
         public double TotalPurchase(double purchaseValue)
         {
-            PrintOutput.PrintResult(purchaseValue, CalculateDiscountRate(), CalculateDiscount(purchaseValue), purchaseValue - CalculateDiscount(purchaseValue));
+            if(purchaseValue < 0)
+                throw new RangeException("Purchase value can not be less then 0.");
+
+            try
+            {
+                PrintOutput.PrintResult(purchaseValue, CalculateDiscountRate(), CalculateDiscount(purchaseValue), purchaseValue - CalculateDiscount(purchaseValue));
+            }
+            catch (NullReferenceException ex)
+            {
+                Console.WriteLine(ex.Message + " PrintOutput is null.");
+            }
             return purchaseValue - CalculateDiscount(purchaseValue);
         }
-
-        //public void PrintResult(double purchaseValue, double discountRate, double discount, double total)
-        //{
-        //    Console.WriteLine("=================================");
-        //    Console.WriteLine("Purchase value: " + purchaseValue + "$" + 
-        //        "\nDiscount rate: "+ discountRate + "%" +
-        //        "\nDiscount: " + discount + "$" +
-        //        "\nTotal: " + total + "$");
-        //    Console.WriteLine("=================================");
-        //}
     }
 }
