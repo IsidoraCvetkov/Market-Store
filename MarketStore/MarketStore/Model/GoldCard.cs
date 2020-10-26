@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace MarketStore.Model
 {
-    class Gold : Card
+    class GoldCard : Card
     {
-        public Gold(IPrintOutput printOutput, double turnover) : base(printOutput, turnover)
+        public GoldCard(IPrintOutput printOutput, double turnover) : base(printOutput, turnover)
         {
             this.DiscountRate = 2;
         }

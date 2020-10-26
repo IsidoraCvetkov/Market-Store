@@ -15,7 +15,7 @@ namespace MarketStore
 
             try
             {
-                Bronze bronzeCard = new Bronze(printOutput, 0);
+                BronzeCard bronzeCard = new BronzeCard(printOutput, 0);
                 bronzeCard.TotalPurchase(150);
             }
             catch(RangeException ex)
@@ -25,7 +25,7 @@ namespace MarketStore
 
             try
             {
-                Silver silverCard = new Silver(printOutput, 600);
+                SilverCard silverCard = new SilverCard(printOutput, 600);
                 silverCard.TotalPurchase(850);
             }
             catch (RangeException ex)
@@ -35,7 +35,7 @@ namespace MarketStore
 
             try
             {
-                Gold goldCard = new Gold(printOutput, 1500);
+                GoldCard goldCard = new GoldCard(printOutput, 1500);
                 goldCard.TotalPurchase(1300);
             }
             catch (RangeException ex)

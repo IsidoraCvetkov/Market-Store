@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace MarketStore.Model
 {
-    class Bronze : Card
+    class BronzeCard : Card
     {
-        public Bronze(IPrintOutput printOutput, double turnover) : base(printOutput, turnover)
+        public BronzeCard(IPrintOutput printOutput, double turnover) : base(printOutput, turnover)
         {
         }
         protected override double CalculateDiscountRate()
